@@ -1,1 +1,1 @@
-hello world
+npm start to launch server

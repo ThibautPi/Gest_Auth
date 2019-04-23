@@ -44,6 +44,7 @@ module.exports ={
   },
 
   githubOAuth: async function(req,res,next){
+    console.log('req',req);
     const token = signToken(req.user);
     res.status(200).json({token});
   },

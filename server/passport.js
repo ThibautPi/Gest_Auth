@@ -3,7 +3,7 @@ const JwtStrategy = require('passport-jwt').Strategy;
 const { ExtractJwt } = require('passport-jwt');
 const LocalStrategy = require('passport-local').Strategy;
 const GooglePlusTokenStrategy = require('passport-google-plus-token');
-const GitHubStrategy = require('passport-github2');
+const GitHubStrategy = require('passport-github');
 const config = require('./configuration');
 const User = require('./models/user');
 
@@ -60,11 +60,11 @@ passport.use("googleToken",new GooglePlusTokenStrategy({
 passport.use("githubToken",new GitHubStrategy({
   clientID: config.oauth.github.clientID,
   clientSecret: config.oauth.github.clientSecret,
-  callbackURL: "htpp://localhost:3000"
+  callbackURL:"http://localhost:3000"
 },async function(accessToken,refreshToken,profile,done){
   try{
     //Check wether this current user exists in our
-    console.log(profile);
+    console.log('profile',profile);
     const existingUser = await User.findOne({"github.id": profile.id});
     if(existingUser){
       console.log("user already exists in our DB");
@@ -84,6 +84,7 @@ passport.use("githubToken",new GitHubStrategy({
     done(null,newUser);
   }
   catch(error){
+    console.log('error',error.message);
     done(null,false,error.message);
 
   }
