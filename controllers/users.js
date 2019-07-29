@@ -43,14 +43,15 @@ module.exports ={
     res.status(200).json({token});
   },
 
-  githubOAuth: async function(req,res,next){
+  /*githubOAuth: async function(req,res,next){
     console.log('req',req);
     const token = signToken(req.user);
     res.status(200).json({token});
-  },
+  },*/
 
   secret: async function(req,res,next){
     console.log('I managed to get here');
+    console.log(req);
     res.json({secret:"resource"})
   }
 

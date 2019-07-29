@@ -1,15 +1,13 @@
 {
-  "name": "codeworker2",
+  "name": "gestman_auth",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "server-dev": "cross-env NODE_ENV=prod nodemon ./server/app.js",
-    "client-dev": "npm start --prefix client",
-    "start-dev": "concurrently \"npm run server-dev\" \"npm run client-dev\""
+    "auth-start": "cross-env NODE_ENV=prod nodemon app.js"
   },
   "author": "Piquard Thibaut",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",

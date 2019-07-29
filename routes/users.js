@@ -19,9 +19,9 @@ router.route('/signin')
 router.route('/oauth/google')
   .post(passportGoogle,UsersController.googleOAuth);
 
-router.route('/oauth/github')
+/*router.route('/oauth/github')
   .post(passportGithub,UsersController.githubOAuth);
-
+*/
 router.route('/secret')
   .get(passportJWT,UsersController.secret);
 

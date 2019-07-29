@@ -56,6 +56,7 @@ passport.use("googleToken",new GooglePlusTokenStrategy({
   }
 }));
 
+/*
 //GITHUB STRATEGY
 passport.use("githubToken",new GitHubStrategy({
   clientID: config.oauth.github.clientID,
@@ -89,7 +90,7 @@ passport.use("githubToken",new GitHubStrategy({
 
   }
 }));
-
+*/
 // LOCAL STRATEGY
 passport.use(new LocalStrategy({
   usernameField: 'email'
