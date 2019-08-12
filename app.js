@@ -15,7 +15,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 // Routes
-app.use('/users',require('./routes/users'));
+app.use('/auth',require('./routes/users'));
 
 // Start the server
 const port = process.env.PORT || 5003;

@@ -4,7 +4,7 @@ const User = require('../models/user');
 
 signToken = function(user) {
   return JWT.sign({
-    iss: 'CodeWorkr',
+    iss: 'thesis',
     sub: user._id,
     iat: new Date().getTime(),
     exp: new Date().setDate(new Date().getDate() + 1) //current time + 1 day ahead

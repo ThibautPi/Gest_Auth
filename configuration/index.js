@@ -1,5 +1,5 @@
 module.exports = {
-  JWT_SECRET: 'GestManAuthentification',
+  JWT_SECRET: 'gestmanauthentification',
   oauth: {
     google: {
       clientID:'855465042567-s8fcoavtdfe6isvpaev27lcik41c2ero.apps.googleusercontent.com',

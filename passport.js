@@ -1,15 +1,14 @@
 const passport = require('passport');
 const JwtStrategy = require('passport-jwt').Strategy;
-const { ExtractJwt } = require('passport-jwt');
+const  ExtractJwt  = require('passport-jwt').ExtractJwt;
 const LocalStrategy = require('passport-local').Strategy;
 const GooglePlusTokenStrategy = require('passport-google-plus-token');
-const GitHubStrategy = require('passport-github');
 const config = require('./configuration');
 const User = require('./models/user');
 
 //JSON WEB TOKENS STRATEGY
 passport.use(new JwtStrategy({
-  jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken('Authorization'),
   secretOrKey: config.JWT_SECRET
 }, async function(payload,done){
   try{
@@ -56,41 +55,7 @@ passport.use("googleToken",new GooglePlusTokenStrategy({
   }
 }));
 
-/*
-//GITHUB STRATEGY
-passport.use("githubToken",new GitHubStrategy({
-  clientID: config.oauth.github.clientID,
-  clientSecret: config.oauth.github.clientSecret,
-  callbackURL:"http://localhost:3000"
-},async function(accessToken,refreshToken,profile,done){
-  try{
-    //Check wether this current user exists in our
-    console.log('profile',profile);
-    const existingUser = await User.findOne({"github.id": profile.id});
-    if(existingUser){
-      console.log("user already exists in our DB");
-      return done(null,existingUser);
-    }
 
-    //if new account
-    const newUser = new User({
-      method:'github',
-      github:{
-        id:profile.id,
-        email:profile.emails[0].value
-      }
-    });
-
-    await newUser.save();
-    done(null,newUser);
-  }
-  catch(error){
-    console.log('error',error.message);
-    done(null,false,error.message);
-
-  }
-}));
-*/
 // LOCAL STRATEGY
 passport.use(new LocalStrategy({
   usernameField: 'email'
