@@ -1,4 +1,4 @@
-# Profile microservice
+# Authentication microservice
 
 This is the authentication microservice
 
